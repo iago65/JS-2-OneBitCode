@@ -109,12 +109,13 @@ personagens.sort(function (a, b) {
   return a.nivel - b.nivel // Ordenação crescente (menor → maior)
   
   // EXEMPLO:
-  // Jaina(26) vs Garrosh(28): 26-28 = -2 (negativo) → Jaina vem primeiro
-  // Garrosh(28) vs Muradin(29): 28-29 = -1 (negativo) → Garrosh vem primeiro
+  // Jaina(26) vs Garrosh(28): 26-28 = -2 (negativo) -> Jaina vem primeiro
+  // Garrosh(28) vs Muradin(29): 28-29 = -1 (negativo) -> Garrosh vem primeiro
   // E assim por diante até organizar todos!
 })
 
 // ATENÇÃO: o sort() MODIFICA o array original! (diferente do map, filter, etc.)
+// Por isso é interessante utilizar o slice() para fazer um "backup" do array original
 console.log("Personagens ordenados por nível (menor → maior):")
 console.log(personagens)
 
