@@ -19,7 +19,7 @@ function dobrar(num){
   dobrar(num * 2)
 }
 
-//dobrar(1) //! Aqui ela estoura a pilha de chamadas
+dobrar(1) //! Aqui ela estoura a pilha de chamadas
 
 
 //? fatorial de 5: !5 === 5 * 4 * 3 * 2 * 1 === 5 * !4
