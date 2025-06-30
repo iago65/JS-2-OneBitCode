@@ -44,7 +44,6 @@ function criarNovaVaga() {
 }
 
 function visualizarVaga() {
-  // A opção de visualizar uma vaga deve pedir o índice da vaga e mostrar todas as informações dela: índice, nome, descrição, data limite, quantidade de candidatos e o nome dos candidatos.
   const indice = parseInt(prompt("Insira o índice da vaga: "))
 
   const vaga = vagas[indice]
@@ -57,6 +56,48 @@ function visualizarVaga() {
     texto += "\nNome dos candidatos: " +  vaga.candidatos.map(candidatos => candidatos.nome).join(", ")
 
     alert(texto)
+  } else{
+    alert("Não existe uma vaga com esse índice. Retornando ao menu!")
+  }
+}
+
+function inscreverCandidato() {
+  const nomeCandidato = prompt("Insira o nome do candidato: ")
+  const indice = parseInt(prompt("Insira o índice da vaga que o candidato será inscrito: "))
+  const vaga = vagas[indice]
+
+  if (vaga) {
+    const confirmacao = confirm("Deseja adicionar o candidato " + nomeCandidato + " a vaga de " + vaga.nome + "?")
+
+    if (confirmacao) {
+      vaga.candidatos.push({nome: nomeCandidato})
+      alert("Candidato Inscrito com sucesso.")
+    } else {
+      alert("Inscrição cancelada.")
+    }
+  } else {
+    alert("Vaga não encontrada.")
+  }
+}
+
+function excluirVaga() {
+  const indice = parseInt(prompt("Insira o índice da vaga a ser excluída: "))
+  const vaga = vagas[indice]
+  if (vaga) {
+    let texto = "Índice: " + indice
+    texto += "\nNome: " + vaga.nome
+    texto += "\nDescrição: " + vaga.descricao
+    texto += "\nData Limite: " + vaga.dataLimite
+    texto += "\nQuantidade de Candidatos: " + vaga.candidatos.length
+    texto += "\nNome dos candidatos: " +  vaga.candidatos.map(candidatos => candidatos.nome).join(", ")
+
+    const confirmacao = confirm("Deseja excluir a vaga: " + texto + "?")
+    if (confirmacao) {
+      vagas.splice(indice, 1)
+      alert("Vaga excluída com sucesso.")
+    }else{
+      alert("Exclusão cancelada. ")
+    }
   } else{
     alert("Não existe uma vaga com esse índice. Retornando ao menu!")
   }
