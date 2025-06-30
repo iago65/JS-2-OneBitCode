@@ -33,10 +33,10 @@ function criarNovaVaga() {
   const nome = prompt("Insira o nome da vaga: ")
   const descricao = prompt("Insira a descrição da vaga: ")
   const dataLimite = prompt("Insira a data limite da vaga: dd/mm/yyyy")
-  confirm("Deseja criar nova Vaga? ")
+  const confirmacao = confirm("Deseja criar nova Vaga? ")
 
-  if (confirm){
-    vagas.push({nome, descricao, dataLimite})
+  if (confirmacao){
+    vagas.push({nome, descricao, dataLimite, candidatos: []})
     alert("Vaga criada com sucesso. ")
   } else{
     alert("Vaga não criada. Voltando para o menu.")
