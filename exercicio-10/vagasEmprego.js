@@ -15,20 +15,28 @@
 // Este é o exercício de revisão do módulo, então aproveite para utilizar todos os recursos vistos até agora sempre que possível, como os objetos, arrays e funções.
 
 let vagas = [
-  {nome: "Vaga de exemplo", descricao: "Bla bla teste", dataLimite: "30/06/2025"}
+  {nome: "Vaga de exemplo", descricao: "Bla bla teste", dataLimite: "30/06/2025", candidatos: [{nome: "Roberval Teste"}]}
 ]
 
 function listarVagas() {
+  const vagasEmTexto = vagas.reduce((textoFinal, vaga, indice) => {
+    textoFinal += indice + ". "
+    textoFinal += vaga.nome
+    textoFinal += " (" + vaga.candidatos.length + " candidatos)\n"
+    return textoFinal
+  }, "")
+
+  alert(vagasEmTexto)
 }
 
 function criarNovaVaga() {
-  const nomeVaga = prompt("Insira o nome da vaga: ")
-  const descricaoVaga = prompt("Insira a descrição da vaga: ")
-  const dataLimiteDaVaga = prompt("Insira a data limite da vaga: dd/mm/yyyy")
+  const nome = prompt("Insira o nome da vaga: ")
+  const descricao = prompt("Insira a descrição da vaga: ")
+  const dataLimite = prompt("Insira a data limite da vaga: dd/mm/yyyy")
   confirm("Deseja criar nova Vaga? ")
 
   if (confirm){
-    vagas.push({nomeVaga, descricaoVaga, dataLimiteDaVaga})
+    vagas.push({nome, descricao, dataLimite})
     alert("Vaga criada com sucesso. ")
   } else{
     alert("Vaga não criada. Voltando para o menu.")
@@ -36,7 +44,22 @@ function criarNovaVaga() {
 }
 
 function visualizarVaga() {
-  
+  // A opção de visualizar uma vaga deve pedir o índice da vaga e mostrar todas as informações dela: índice, nome, descrição, data limite, quantidade de candidatos e o nome dos candidatos.
+  const indice = parseInt(prompt("Insira o índice da vaga: "))
+
+  const vaga = vagas[indice]
+  if (vaga) {
+    let texto = "Índice: " + indice
+    texto += "\nNome: " + vaga.nome
+    texto += "\nDescrição: " + vaga.descricao
+    texto += "\nData Limite: " + vaga.dataLimite
+    texto += "\nQuantidade de Candidatos: " + vaga.candidatos.length
+    texto += "\nNome dos candidatos: " +  vaga.candidatos.map(candidatos => candidatos.nome).join(", ")
+
+    alert(texto)
+  } else{
+    alert("Não existe uma vaga com esse índice. Retornando ao menu!")
+  }
 }
 
 function exibirMenu() {
