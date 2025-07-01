@@ -45,8 +45,13 @@ function criarNovaVaga() {
 
 function visualizarVaga() {
   const indice = parseInt(prompt("Insira o índice da vaga: "))
-
   const vaga = vagas[indice]
+
+  if (indice >= vagas.length || indice < 0) {
+    alert("Índice inválido")
+    return //* Esse return seria como o 'break' no switch ele meio que retorna da função. Imediatamente encerrando a função.
+  }
+
   if (vaga) {
     let texto = "Índice: " + indice
     texto += "\nNome: " + vaga.nome
