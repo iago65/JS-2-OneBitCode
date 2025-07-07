@@ -1,23 +1,69 @@
-// Escreva um programa que converta temperaturas entre Celsius, Fahrenheit e Kelvin. O programa deve:
-
-// Exibir um menu com as opções de conversão (C→F, C→K, F→C, F→K, K→C, K→F, Sair)
-// Solicitar a temperatura de entrada
-// Calcular e exibir o resultado
-// Usar funções para cada tipo de conversão
-// Repetir até o usuário escolher "Sair"
-// Fórmulas:
-
-// C para F: (C × 9/5) + 32
-// C para K: C + 273.15
-// F para C: (F - 32) × 5/9
-// K para C: K - 273.15
-
 let menu = ""
 
+function cParaf() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Celsius: "))
+  const resultado = (temperaturaDeEntrada * 9 / 5) + 32
+  alert("A conversão de C→F do valor " + temperaturaDeEntrada + "°C é " + resultado.toFixed(2) + "°F")
+}
+
+function cParak() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Celsius: "))
+  const resultado = temperaturaDeEntrada + 273.15
+  alert("A conversão de C→K do valor " + temperaturaDeEntrada + "°C é " + resultado.toFixed(2) + "K")
+}
+
+function fParac() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Fahrenheit: "))
+  const resultado = (temperaturaDeEntrada - 32) * 5 / 9
+  alert("A conversão de F→C do valor " + temperaturaDeEntrada + "°F é " + resultado.toFixed(2) + "°C")
+}
+
+function fParak() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Fahrenheit: "))
+  const resultado = (temperaturaDeEntrada - 32) * 5 / 9 + 273.15
+  alert("A conversão de F→K do valor " + temperaturaDeEntrada + "°F é " + resultado.toFixed(2) + "K")
+}
+
+function kParac() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Kelvin: "))
+  const resultado = temperaturaDeEntrada - 273.15
+  alert("A conversão de K→C do valor " + temperaturaDeEntrada + "K é " + resultado.toFixed(2) + "°C")
+}
+
+function kParaf() {
+  const temperaturaDeEntrada = parseFloat(prompt("Insira a temperatura em Kelvin: "))
+  const resultado = (temperaturaDeEntrada - 273.15) * 9 / 5 + 32
+  alert("A conversão de K→F do valor " + temperaturaDeEntrada + "K é " + resultado.toFixed(2) + "°F")
+}
+
 do {
-  menu = prompt("*** CONVERSOR DE TEMPERATURAS *** \n\n1. C→F\n2. C→K\n3. F→C\n4. F→K\n 5. K→C\n6. K→F\n7. Sair")
-
-  const temperaturaDeEntrada = parseInt(prompt("Insira a temperatura de entrada (Somente o número): "))
-
+  menu = prompt("*** CONVERSOR DE TEMPERATURAS *** \n\n1. C→F\n2. C→K\n3. F→C\n4. F→K\n5. K→C\n6. K→F\n7. Sair")
   
-} while (menu != "7");
+  switch(menu){
+    case "1":
+      cParaf()
+      break
+    case "2":
+      cParak()
+      break
+    case "3":
+      fParac()
+      break
+    case "4":
+      fParak()
+      break
+    case "5":
+      kParac()
+      break
+    case "6":
+      kParaf()
+      break
+    case "7":
+      alert("Finalizando...")
+      break
+    default:
+      alert("Valor não interpretado! Tente novamente")
+      break
+  }
+  
+} while (menu !== "7");
