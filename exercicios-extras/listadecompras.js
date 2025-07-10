@@ -10,7 +10,7 @@
 // Sair
 // Cada item deve ser um objeto com: nome, quantidade e status (comprado/não comprado).
 
-item = [{nome: "Referencia", quantidade: 0, status: "Não comprado"}]
+item = []
 
 function adicionarItem(){
   const nome = prompt("Insira o nome do item: ")
@@ -23,7 +23,7 @@ function adicionarItem(){
 function listarItem(){
   const itensListados = item.reduce((listaFinal, item, indice) => {
     listaFinal += indice + ". "
-    listaFinal += item.nome + " - Quantidade: " + item.quantidade + " " +  item.status
+    listaFinal += item.nome + " - Quantidade: " + item.quantidade + " - " +  item.status + "\n"
     return listaFinal
   }, "")
 
@@ -36,6 +36,24 @@ function removerItem(){
 
   if(pesquisaRemove == item.nome.includes(pesquisaRemove)){
     item.splice(resultadoPesquisa, 1)
+    alert("Item " + pesquisaRemove + " removido com sucesso!")
+  }else{
+    alert("Não existe item com nome " + pesquisaRemove + " na lista. Impossível remover!")
+  }
+}
+
+function marcarItem(){
+  const indice = parseInt("Insira o índice do item que será marcado como comprado: ")
+  const itemMarcar = item[indice]
+
+  if (indice >= item.length || indice < 0){
+    alert("Índice inválido!")
+    return
+  }
+
+  if (itemMarcar){
+    item.status.splice(indice, 1, "Comprado")
+    alert("Item marcado como 'Comprado'!")
   }
 }
 
